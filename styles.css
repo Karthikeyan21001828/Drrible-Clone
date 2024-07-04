@@ -1,0 +1,133 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5em;
+    margin-right: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.auth a {
+    color: white;
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+.header-right input[type="text"] {
+    padding: 5px;
+    margin-left: 20px;
+    border: none;
+    border-radius: 3px;
+}
+
+.filter-bar {
+    background-color: #413f3f;
+    padding: 20px;
+    text-align: center;
+}
+
+.filter-bar p {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.filter-elements
+{
+    display: flex; 
+    justify-content:center;
+}
+
+.filter-options a {
+    margin-left: 20px;
+    background-color: #a29f9f;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.filter-options .btn-signup {
+    background-color: #ff4081;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.shots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.shot-item {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.shot-item img {
+    width: 100%;
+    height: auto;
+}
+
+.shot-info {
+    padding: 10px;
+}
+
+.shot-stats {
+    display: flex;
+    justify-content: space-between;
+    color: #a09a9a;
+}
+.shot-stats img{
+    width: 18px;
+    height: 18px;
+}
+.shot-author a {
+    color: #64bfe7;
+    text-decoration: none;
+    font-weight: bold;
+}

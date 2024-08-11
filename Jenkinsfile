@@ -8,11 +8,6 @@ pipeline {
                     credentialsId: 'github-pat'
             }
         }
-        stage('Build') {
-            steps {
-                echo 'No build necessary for static content'
-            }
-        }
         stage('Deploy to IIS') {
             steps {
                 script {

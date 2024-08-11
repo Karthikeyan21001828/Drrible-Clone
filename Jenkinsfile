@@ -9,6 +9,15 @@ pipeline {
                 git branch: 'main', 
                     url: 'https://github.com/Karthikeyan21001828/Drrible-Clone.git', 
                     credentialsId: 'github-pat'
+             }
+         }
+         stage('Synchronize Workspace') {
+            steps {
+                script {
+                    // Pull the latest changes from the repository
+                    sh 'git fetch --all'
+                    sh 'git reset --hard origin/main'
+                }
             }
         }
         stage('Deploy to IIS') {

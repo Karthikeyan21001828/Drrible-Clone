@@ -11,15 +11,6 @@ pipeline {
                     credentialsId: 'github-pat'
              }
          }
-         stage('Synchronize Workspace') {
-            steps {
-                script {
-                    // Pull the latest changes from the repository
-                    bat 'git fetch --all'
-                    bat 'git reset --hard origin/main'
-                }
-            }
-        }
         stage('Deploy to IIS') {
             steps {
                 script {

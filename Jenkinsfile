@@ -14,7 +14,7 @@ pipeline {
         stage('Deploy to IIS') {
             steps {
                 script {
-                    def targetDir = 'D:/Devops/Drrible-Clone'
+                    def targetDir = 'D:\Devops\Drrible-Clone'
                     bat """
                         echo Deploying website to IIS
                         xcopy /s /e /y . ${targetDir}

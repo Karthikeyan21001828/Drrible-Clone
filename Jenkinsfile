@@ -15,8 +15,8 @@ pipeline {
             steps {
                 script {
                     // Pull the latest changes from the repository
-                    sh 'git fetch --all'
-                    sh 'git reset --hard origin/main'
+                    bat 'git fetch --all'
+                    bat 'git reset --hard origin/main'
                 }
             }
         }

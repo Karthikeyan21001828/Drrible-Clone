@@ -1,26 +1,34 @@
 pipeline {
     agent any
-    triggers {
-        pollSCM('H/1 * * * *')
+
+    environment {
+        DEPLOY_SERVER = '192.168.36.16'
+        DEPLOY_PATH = 'C:\\inetpub\\Devops'
     }
+     // triggers {
+     //     pollSCM('H/2 * * * *') // Polls every 5 minutes
+     // }
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', 
-                    url: 'https://github.com/Karthikeyan21001828/Drrible-Clone.git', 
-                    credentialsId: 'github-pat'
-             }
-         }
-        stage('Deploy to IIS') {
+                checkout([$class: 'GitSCM',
+                    branches: [[name: '*/main']],
+                    userRemoteConfigs: [[url: 'https://github.com/Karthikeyan21001828/Drrible-Clone.git']]
+                ])
+            }
+        }
+
+        stage('Deploy') {
             steps {
                 script {
-                    def targetDir = 'D:\\Devops\\Drrible-Clone'
-                    bat """
-                        echo Deploying website to IIS
-                        xcopy /s /e /y . ${targetDir}
-                    """
+                    // Remove the existing files
+                    bat "del /S /Q ${DEPLOY_PATH}\\*"
+                    
+                    // Copy the new files from the repository to the deployment folder
+                    bat "xcopy /E /I /Y ${env.WORKSPACE} ${DEPLOY_PATH}"
                 }
             }
         }
     }
 }
+

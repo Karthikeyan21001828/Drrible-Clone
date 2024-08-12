@@ -13,8 +13,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    bat "del /S /Q C:\\inetpub\\Devops\\*"
-                    bat "xcopy /E /I /Y ${env.WORKSPACE} C:\\inetpub\\Devops"
+                    bat "del /S /Q C:\\DevopsSource\\*"
+                    bat "xcopy /E /I /Y ${env.WORKSPACE} C:\\DevopsSource"
                 }
             }
         }

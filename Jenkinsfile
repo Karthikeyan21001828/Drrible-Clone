@@ -3,7 +3,6 @@ pipeline {
 
     environment {
         DEPLOY_SERVER = '192.168.36.16'
-        DEPLOY_PATH = 'C:\\inetpub\\Devops'
     }
      // triggers {
      //     pollSCM('H/2 * * * *') // Polls every 5 minutes
@@ -22,10 +21,10 @@ pipeline {
             steps {
                 script {
                     // Remove the existing files
-                    bat "del /S /Q ${C:\\inetpub\\Devops}\\*"
+                    bat "del /S /Q ${'C:\\inetpub\\Devops'}\\*"
                     
                     // Copy the new files from the repository to the deployment folder
-                    bat "xcopy /E /I /Y ${env.WORKSPACE} ${C:\\inetpub\\Devops}"
+                    bat "xcopy /E /I /Y ${env.WORKSPACE} ${'C:\\inetpub\\Devops'}"
                 }
             }
         }

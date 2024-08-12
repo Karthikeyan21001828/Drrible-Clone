@@ -22,10 +22,10 @@ pipeline {
             steps {
                 script {
                     // Remove the existing files
-                    bat "del /S /Q ${DEPLOY_PATH}\\*"
+                    bat "del /S /Q ${C:\\inetpub\\Devops}\\*"
                     
                     // Copy the new files from the repository to the deployment folder
-                    bat "xcopy /E /I /Y ${env.WORKSPACE} ${DEPLOY_PATH}"
+                    bat "xcopy /E /I /Y ${env.WORKSPACE} ${C:\\inetpub\\Devops}"
                 }
             }
         }

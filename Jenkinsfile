@@ -4,7 +4,7 @@ pipeline {
         pollSCM('H/1 * * * *')
     }
     stages {
-        stage('Clone Repository') {
+        stage('Checkout') {
             steps {
                 git branch: 'main', 
                     url: 'https://github.com/Karthikeyan21001828/Drrible-Clone.git', 

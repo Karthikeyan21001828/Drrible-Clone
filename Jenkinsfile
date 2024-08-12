@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         TERRAFORM_PATH = 'C:/Terraform/terraform.exe'
-        TERRAFORM_DIR = 'C:/Users/Karthikeyan/Terraform'
+        TERRAFORM_DIR = 'C:/Terraform'
     }
     
     stages {

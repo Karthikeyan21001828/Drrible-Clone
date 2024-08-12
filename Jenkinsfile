@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    environment {
-        TERRAFORM_PATH = 'C:\\Users\\Karthikeyan\\Terraform'
-    }
     stages {
         stage('Checkout') {
             steps {

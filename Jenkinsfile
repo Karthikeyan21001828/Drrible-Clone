@@ -29,7 +29,7 @@ pipeline {
             steps {
                 script {
                     dir("${env.TERRAFORM_DIR}") {
-                        bat "terraform apply -auto-approve"
+                        bat "terraform apply"
                     }
                 }
             }

@@ -1,8 +1,8 @@
 pipeline {
     agent any
-     environment {
-        TERRAFORM_PATH = 'C:/Terraform' 
-        TERRAFORM_DIR = 'C:/Users/Karthikeyan/Terraform'
+    environment {
+        TERRAFORM_PATH = 'C:\\Terraform\\terraform.exe'
+        TERRAFORM_DIR = 'C:\\Users\\Karthikeyan\\Terraform'
     }
     stages {
         stage('Checkout') {
@@ -16,9 +16,8 @@ pipeline {
         stage('Terraform Init') {
             steps {
                 script {
-                    // Navigate to the Terraform directory and initialize Terraform
                     dir("${env.TERRAFORM_DIR}") {
-                        sh "${env.TERRAFORM_PATH} init"
+                        bat "${env.TERRAFORM_PATH} init"
                     }
                 }
             }
@@ -27,9 +26,8 @@ pipeline {
         stage('Terraform Plan') {
             steps {
                 script {
-                    // Run Terraform plan in the Terraform directory
                     dir("${env.TERRAFORM_DIR}") {
-                        sh "${env.TERRAFORM_PATH} plan"
+                        bat "${env.TERRAFORM_PATH} plan"
                     }
                 }
             }
@@ -38,9 +36,8 @@ pipeline {
         stage('Terraform Apply') {
             steps {
                 script {
-                    // Run Terraform apply in the Terraform directory
                     dir("${env.TERRAFORM_DIR}") {
-                        sh "${env.TERRAFORM_PATH} apply -auto-approve"
+                        bat "${env.TERRAFORM_PATH} apply -auto-approve"
                     }
                 }
             }
@@ -48,12 +45,10 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    bat "del /S /Q ${'C:\\inetpub\\Devops'}\\*"
-                    
-                    bat "xcopy /E /I /Y ${env.WORKSPACE} ${'C:\\inetpub\\Devops'}"
+                    bat "del /S /Q C:\\inetpub\\Devops\\*"
+                    bat "xcopy /E /I /Y ${env.WORKSPACE} C:\\inetpub\\Devops"
                 }
             }
         }
     }
 }
-

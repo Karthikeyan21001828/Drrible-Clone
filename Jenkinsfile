@@ -2,10 +2,8 @@ pipeline {
     agent any
 
     environment {
-        TERRAFORM_PATH = 'C:/Terraform/terraform.exe'
-        TERRAFORM_DIR = 'C:/Terraform'
+        TERRAFORM_DIR = 'C:/Users/Karthikeyan/Terraform'
     }
-    
     stages {
         stage('Checkout') {
             steps {
@@ -17,20 +15,16 @@ pipeline {
         }
         stage('Terraform Init') {
             steps {
-                script {
-                    dir("${env.TERRAFORM_PATH}") {
-                        bat "terraform init"
-                    }
+                dir("${env.TERRAFORM_DIR}") {
+                    sh 'terraform init'
                 }
             }
         }
-
+        
         stage('Terraform Apply') {
             steps {
-                script {
-                    dir("${env.TERRAFORM_PATH}") {
-                        bat "terraform apply"
-                    }
+                dir("${env.TERRAFORM_DIR}") {
+                    sh 'terraform apply -auto-approve'
                 }
             }
         }

@@ -16,7 +16,7 @@ pipeline {
         stage('Terraform Init') {
             steps {
                 dir("${env.TERRAFORM_DIR}") {
-                    sh 'terraform init'
+                    bat 'terraform init'
                 }
             }
         }
@@ -24,7 +24,7 @@ pipeline {
         stage('Terraform Apply') {
             steps {
                 dir("${env.TERRAFORM_DIR}") {
-                    sh 'terraform apply -auto-approve'
+                    bat 'terraform apply -auto-approve'
                 }
             }
         }

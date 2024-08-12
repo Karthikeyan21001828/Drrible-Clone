@@ -19,7 +19,7 @@ pipeline {
             steps {
                 script {
                     dir("${env.TERRAFORM_DIR}") {
-                        bat "${env.TERRAFORM_PATH} init"
+                        bat "terraform init"
                     }
                 }
             }
@@ -29,7 +29,7 @@ pipeline {
             steps {
                 script {
                     dir("${env.TERRAFORM_DIR}") {
-                        bat "${env.TERRAFORM_PATH} apply -auto-approve"
+                        bat "terraform apply -auto-approve"
                     }
                 }
             }

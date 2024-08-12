@@ -12,25 +12,7 @@ pipeline {
                 ])
             }
         }
-        stage('Terraform Init') {
-            steps {
-                script {
-                    dir("${env.TERRAFORM_PATH}") {
-                        bat "terraform init"
-                    }
-                }
-            }
-        }
 
-        stage('Terraform Apply') {
-            steps {
-                script {
-                    dir("${env.TERRAFORM_PATH}") {
-                        bat "terraform apply -auto-approve"
-                    }
-                }
-            }
-        }
         stage('Deploy') {
             steps {
                 script {

@@ -25,7 +25,7 @@ pipeline {
                             -Dsonar.projectKey=DevOpsTest \
                             -Dsonar.sources=. \
                             -Dsonar.host.url=http://51.20.192.247:9000 \
-                            -Dsonar.login=${sqp_47d2b781110d977af1ded149d91cd920a11cdf67}
+                            
                         '''
                     }
                 }

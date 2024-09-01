@@ -2,12 +2,13 @@ pipeline {
     agent any
 
     triggers {
-        pollSCM('H/1 * * * *') // Polls the SCM every 5 minutes
+        pollSCM('H/1 * * * *') // Polls the SCM every 1 minute
     }
 
-    // environment {
-    //     SONARQUBE = 'SonarQube Test' // Name of the SonarQube server configured in Jenkins
-    // }
+    environment {
+        // Uncomment and configure if using SonarQube
+        // SONARQUBE = 'SonarQube Test' // Name of the SonarQube server configured in Jenkins
+    }
 
     stages {
         stage('Checkout') {
@@ -19,19 +20,19 @@ pipeline {
             }
         }
         
+        // Uncomment and configure if using SonarQube
         // stage('SonarQube Analysis') {
         //     steps {
         //         script {
         //             withSonarQubeEnv(SONARQUBE) {
-        //                 sh 'sonar-scanner -Dsonar.projectKey=Html-Sannner -Dsonar.sources=. -Dsonar.host.url=http://192.168.13.135:9000/ -Dsonar.login=sqa_6fdcabf0c9871ee4686ef89e402c9f4485fc50b0'
+        //                 sh 'sonar-scanner -Dsonar.projectKey=Html-Sanner -Dsonar.sources=. -Dsonar.host.url=http://192.168.13.135:9000/ -Dsonar.login=sqa_6fdcabf0c9871ee4686ef89e402c9f4485fc50b0'
         //             }
         //         }
         //     }
         // }
-        //  stage('SonarQube Quality Gate') {
+        // stage('SonarQube Quality Gate') {
         //     steps {
         //         script {
-        //             // Wait for SonarQube analysis report
         //             timeout(time: 1, unit: 'HOURS') {
         //                 def qg = waitForQualityGate()
         //                 if (qg.status != 'OK') {
@@ -40,21 +41,26 @@ pipeline {
         //             }
         //         }
         //     }
-        //  }
-        
+        // }
+
         stage('Deploy') {
             steps {
                 script {
-                    sh '''
+                    // Use bash to avoid bad substitution errors
+                    sh '''#!/bin/bash
                     echo "Deploying application..."
                     sudo rm -rf /var/www/html/*
                     sudo cp -r ${env.WORKSPACE}/* /var/www/html/
                     '''
-                    // bat "del /S /Q C:\\DevopsSource\\*"
-                    // bat "xcopy /E /I /Y ${env.WORKSPACE} C:\\DevopsSource"
                 }
             }
         }
     }
+    
+    post {
+        always {
+            // Clean up workspace if needed
+            cleanWs()
+        }
+    }
 }
-

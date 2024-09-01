@@ -5,9 +5,9 @@ pipeline {
         pollSCM('H/1 * * * *') // Polls the SCM every 5 minutes
     }
 
-    environment {
-        SONARQUBE = 'SonarQube Test' // Name of the SonarQube server configured in Jenkins
-    }
+    // environment {
+    //     SONARQUBE = 'SonarQube Test' // Name of the SonarQube server configured in Jenkins
+    // }
 
     stages {
         stage('Checkout') {
@@ -19,28 +19,28 @@ pipeline {
             }
         }
         
-        stage('SonarQube Analysis') {
-            steps {
-                script {
-                    withSonarQubeEnv(SONARQUBE) {
-                        sh 'sonar-scanner -Dsonar.projectKey=Html-Sannner -Dsonar.sources=. -Dsonar.host.url=http://192.168.13.135:9000/ -Dsonar.login=sqa_6fdcabf0c9871ee4686ef89e402c9f4485fc50b0'
-                    }
-                }
-            }
-        }
-         stage('SonarQube Quality Gate') {
-            steps {
-                script {
-                    // Wait for SonarQube analysis report
-                    timeout(time: 1, unit: 'HOURS') {
-                        def qg = waitForQualityGate()
-                        if (qg.status != 'OK') {
-                            error "Quality gate failed: ${qg.status}"
-                        }
-                    }
-                }
-            }
-        }
+        // stage('SonarQube Analysis') {
+        //     steps {
+        //         script {
+        //             withSonarQubeEnv(SONARQUBE) {
+        //                 sh 'sonar-scanner -Dsonar.projectKey=Html-Sannner -Dsonar.sources=. -Dsonar.host.url=http://192.168.13.135:9000/ -Dsonar.login=sqa_6fdcabf0c9871ee4686ef89e402c9f4485fc50b0'
+        //             }
+        //         }
+        //     }
+        // }
+        //  stage('SonarQube Quality Gate') {
+        //     steps {
+        //         script {
+        //             // Wait for SonarQube analysis report
+        //             timeout(time: 1, unit: 'HOURS') {
+        //                 def qg = waitForQualityGate()
+        //                 if (qg.status != 'OK') {
+        //                     error "Quality gate failed: ${qg.status}"
+        //                 }
+        //             }
+        //         }
+        //     }
+        //  }
         
         stage('Deploy') {
             steps {

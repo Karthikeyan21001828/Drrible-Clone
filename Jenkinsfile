@@ -48,7 +48,7 @@ pipeline {
                     // sh 'sudo rm -rf /var/www/html/*'
                     // sh 'sudo cp -r ${env.WORKSPACE}/* /var/www/html/'
                     bat "del /S /Q C:\\DevopsSource\\*"
-                    bat "xcopy /E /I /Y $(env.WORKSPACE) C:\\DevopsSource"
+                    bat "xcopy /E /I /Y ${env.WORKSPACE} C:\\DevopsSource"
                 }
             }
         }

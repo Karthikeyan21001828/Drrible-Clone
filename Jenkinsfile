@@ -18,7 +18,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 script {
-                    withSonarQubeEnv(SONARQUBE) {
+                    withSonarQubeEnv('SonarQubeServer') { // Use the name of your SonarQube server here
                         sh '''
                         #!/bin/bash
                         sonar-scanner \

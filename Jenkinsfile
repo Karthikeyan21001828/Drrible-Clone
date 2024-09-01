@@ -14,6 +14,36 @@ pipeline {
                 ])
             }
         }
+
+        stage('SonarQube Analysis') {
+            steps {
+                script {
+                    withSonarQubeEnv(SONARQUBE) {
+                        sh '''
+                        #!/bin/bash
+                        sonar-scanner \
+                            -Dsonar.projectKey=Drrible-Clone \
+                            -Dsonar.sources=. \
+                            -Dsonar.host.url=http://your-sonarqube-server:9000 \
+                            -Dsonar.login=${SONAR_TOKEN}
+                        '''
+                    }
+                }
+            }
+        }
+        
+        stage('SonarQube Quality Gate') {
+            steps {
+                script {
+                    timeout(time: 1, unit: 'HOURS') {
+                        def qg = waitForQualityGate()
+                        if (qg.status != 'OK') {
+                            error "Quality gate failed: ${qg.status}"
+                        }
+                    }
+                }
+            }
+        }
         
         stage('Deploy') {
             steps {

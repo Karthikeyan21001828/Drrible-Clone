@@ -45,7 +45,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    sh 'echo "your_password" | sudo -S rm -rf /var/www/html/*'
+                    sh 'echo "redhat" | sudo -S rm -rf /var/www/html/*'
                     sh 'sudo cp -r ${env.WORKSPACE}/* /var/www/html/'
                     // bat "del /S /Q C:\\DevopsSource\\*"
                     // bat "xcopy /E /I /Y ${env.WORKSPACE} C:\\DevopsSource"

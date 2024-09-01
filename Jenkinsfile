@@ -21,7 +21,7 @@ pipeline {
                     withSonarQubeEnv('SonarQube') { // Use the name of your SonarQube server here
                         sh '''
                         #!/bin/bash
-                        sonar-scanner \
+                        /opt/sonar-scanner/bin/sonar-scanner \
                             -Dsonar.projectKey=Drrible-Clone \
                             -Dsonar.sources=. \
                             -Dsonar.host.url=http://192.168.13.135:9000 \

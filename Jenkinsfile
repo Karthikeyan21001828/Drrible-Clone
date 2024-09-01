@@ -24,8 +24,8 @@ pipeline {
                         sonar-scanner \
                             -Dsonar.projectKey=Drrible-Clone \
                             -Dsonar.sources=. \
-                            -Dsonar.host.url=http://your-sonarqube-server:9000 \
-                            -Dsonar.login=${SONAR_TOKEN}
+                            -Dsonar.host.url=http://192.168.13.135:9000 \
+                            -Dsonar.login=${sqa_943f04b21282cbb5473643810b908501f4a4c48b}
                         '''
                     }
                 }

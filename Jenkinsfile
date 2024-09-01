@@ -19,15 +19,14 @@ pipeline {
             steps {
                 script {
                     withSonarQubeEnv('SonarQube') { // Use the name of your SonarQube server here
-                        withCredentials([string(credentialsId: 'SONAR_TOKEN', variable: 'SONAR_TOKEN')]) {
-                            sh '''
-                            sonar-scanner \
-                                -Dsonar.projectKey=Drrible-Clone \
-                                -Dsonar.sources=. \
-                                -Dsonar.host.url=http://192.168.13.135:9000 \
-                                -Dsonar.login=${SONAR_TOKEN}
-                            '''
-                        }
+                        sh '''
+                        #!/bin/bash
+                        sonar-scanner \
+                            -Dsonar.projectKey=Drrible-Clone \
+                            -Dsonar.sources=. \
+                            -Dsonar.host.url=http://192.168.13.135:9000 \
+                            -Dsonar.login=${sqa_943f04b21282cbb5473643810b908501f4a4c48b}
+                        '''
                     }
                 }
             }
@@ -49,6 +48,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
+                    // Use bash to avoid bad substitution errors
                     sh '''#!/bin/bash
                     echo "Deploying application..."
                     sudo rm -rf /var/www/html/*

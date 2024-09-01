@@ -45,8 +45,11 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    sh 'sudo -S rm -rf /var/www/html/*'
-                    sh 'sudo cp -r ${env.WORKSPACE}/* /var/www/html/'
+                    sh '''
+                    echo "Deploying application..."
+                    sudo rm -rf /var/www/html/*
+                    sudo cp -r ${env.WORKSPACE}/* /var/www/html/
+                    '''
                     // bat "del /S /Q C:\\DevopsSource\\*"
                     // bat "xcopy /E /I /Y ${env.WORKSPACE} C:\\DevopsSource"
                 }

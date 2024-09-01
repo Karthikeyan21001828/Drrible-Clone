@@ -5,10 +5,10 @@ pipeline {
         pollSCM('H/1 * * * *') // Polls the SCM every 1 minute
     }
 
-    environment {
-        // Uncomment and configure if using SonarQube
-        // SONARQUBE = 'SonarQube Test' // Name of the SonarQube server configured in Jenkins
-    }
+    // environment {
+    //     // Uncomment and configure if using SonarQube
+    //     // SONARQUBE = 'SonarQube Test' // Name of the SonarQube server configured in Jenkins
+    // }
 
     stages {
         stage('Checkout') {

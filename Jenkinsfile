@@ -39,7 +39,7 @@ pipeline {
             steps {
                 script {
                     def projectKey = 'DevOpsTest'
-                    def sonarQubeUrl = 'http://13.60.238.133:9000'
+                    def sonarQubeUrl = 'http://16.171.225.60:9000'
                     def sonarUser = 'admin'
                     def sonarPassword = 'redhat'
 

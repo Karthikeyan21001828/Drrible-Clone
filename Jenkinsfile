@@ -38,10 +38,10 @@ pipeline {
         stage('SonarQube Quality Gate') {
             steps {
                 script {
-                    def projectKey = 'YOUR_PROJECT_KEY'
-                    def sonarQubeUrl = 'http://YOUR_SONARQUBE_SERVER'
-                    def sonarUser = 'YOUR_SONARQUBE_USERNAME'
-                    def sonarPassword = 'YOUR_SONARQUBE_PASSWORD'
+                    def projectKey = 'DevOpsTest'
+                    def sonarQubeUrl = 'http://13.60.238.133:9000'
+                    def sonarUser = 'admin'
+                    def sonarPassword = 'redhat'
 
                     def response = sh(script: """
                         curl -u ${sonarUser}:${sonarPassword} "${sonarQubeUrl}/api/qualitygates/project_status?projectKey=${projectKey}"

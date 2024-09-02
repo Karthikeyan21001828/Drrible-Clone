@@ -42,22 +42,34 @@ pipeline {
                     def sonarQubeUrl = 'http://16.16.202.156:9000'
                     def sonarUser = 'admin'
                     def sonarPassword = 'redhat'
-
+        
+                    // Fetch the API response
                     def response = sh(script: """
                         curl -u ${sonarUser}:${sonarPassword} "${sonarQubeUrl}/api/qualitygates/project_status?projectKey=${projectKey}"
                     """, returnStdout: true).trim()
-
+        
+                    // Log the raw API response for debugging
+                    echo "Raw API Response: ${response}"
+        
+                    // Parse JSON response
                     def jsonResponse = readJSON text: response
                     def qualityGateStatus = jsonResponse.projectStatus.status
-
+        
+                    // Log the quality gate status
                     echo "Quality Gate Status: ${qualityGateStatus}"
-
-                    if (qualityGateStatus != 'OK') {
+        
+                    // Check the quality gate status
+                    if (qualityGateStatus == 'NONE') {
+                        error "Quality gate status is 'NONE'. Please check SonarQube configuration."
+                    } else if (qualityGateStatus != 'OK') {
                         error "Quality gate failed: ${qualityGateStatus}"
+                    } else {
+                        echo "Quality gate passed successfully."
                     }
                 }
             }
         }
+
         
         stage('Deploy') {
             steps {

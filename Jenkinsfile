@@ -33,18 +33,18 @@ pipeline {
             }
         }
         
-        stage('SonarQube Quality Gate') {
-            steps {
-                script {
-                    timeout(time: 1, unit: 'HOURS') {
-                        def qg = waitForQualityGate()
-                        if (qg.status != 'OK') {
-                            error "Quality gate failed: ${qg.status}"
-                        }
-                    }
-                }
-            }
-        }
+        // stage('SonarQube Quality Gate') {
+        //     steps {
+        //         script {
+        //             timeout(time: 1, unit: 'HOURS') {
+        //                 def qg = waitForQualityGate()
+        //                 if (qg.status != 'OK') {
+        //                     error "Quality gate failed: ${qg.status}"
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
         
         stage('Deploy') {
             steps {

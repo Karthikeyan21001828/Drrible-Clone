@@ -25,7 +25,7 @@ pipeline {
                             -Dsonar.projectKey=DevOpsTest \
                             -Dsonar.sources=. \
                             -Dsonar.host.url=http://16.16.202.156:9000 \
-                            -Dsonar.token=sqp_f0fb50f30a450f1a0e4ff750f2cfba7462c936dc \
+                            -Dsonar.token=sqa_39856aa6b48351b890c9ed373abe4a13d72e36a6 \
                             -Dsonar.language=html,css \
                             -Dsonar.ws.timeout=300000 
                            

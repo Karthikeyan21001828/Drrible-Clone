@@ -21,7 +21,7 @@ pipeline {
                     withSonarQubeEnv('SonarQube') { // Use the name of your SonarQube server here
                         sh '''
                         #!/bin/bash
-                        /opt/sonarscanner/bin/sonar-scanner \
+                        /opt/sonar-scanner-6.1.0.4477-linux-x64/bin/sonar-scanner \
                             -Dsonar.projectKey=DevOpsTest \
                             -Dsonar.sources=. \
                             -Dsonar.host.url=http://16.16.202.156:9000 \

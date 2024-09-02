@@ -38,11 +38,22 @@ pipeline {
         stage('SonarQube Quality Gate') {
             steps {
                 script {
-                    timeout(time: 1, unit: 'HOURS') {
-                        def qg = waitForQualityGate()
-                        if (qg.status != 'OK') {
-                            error "Quality gate failed: ${qg.status}"
-                        }
+                    def projectKey = 'YOUR_PROJECT_KEY'
+                    def sonarQubeUrl = 'http://YOUR_SONARQUBE_SERVER'
+                    def sonarUser = 'YOUR_SONARQUBE_USERNAME'
+                    def sonarPassword = 'YOUR_SONARQUBE_PASSWORD'
+
+                    def response = sh(script: """
+                        curl -u ${sonarUser}:${sonarPassword} "${sonarQubeUrl}/api/qualitygates/project_status?projectKey=${projectKey}"
+                    """, returnStdout: true).trim()
+
+                    def jsonResponse = readJSON text: response
+                    def qualityGateStatus = jsonResponse.projectStatus.status
+
+                    echo "Quality Gate Status: ${qualityGateStatus}"
+
+                    if (qualityGateStatus != 'OK') {
+                        error "Quality gate failed: ${qualityGateStatus}"
                     }
                 }
             }

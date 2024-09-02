@@ -26,6 +26,7 @@ pipeline {
                             -Dsonar.sources=. \
                             -Dsonar.host.url=http://51.20.252.126:9000 \
                             -Dsonar.token=sqp_ac62f3278c4222f6f37fadf0aa2668b11b4a686f \
+                            -Dsonar.ws.timeout=300s \
                             -X
                         '''
                     }

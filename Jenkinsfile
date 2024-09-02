@@ -24,7 +24,7 @@ pipeline {
                         /opt/sonarscanner/bin/sonar-scanner \
                             -Dsonar.projectKey=DevOpsTest \
                             -Dsonar.sources=. \
-                            -Dsonar.host.url=http://13.60.238.133:9000 \
+                            -Dsonar.host.url=http://16.171.225.60:9000 \
                             -Dsonar.token=sqp_f0fb50f30a450f1a0e4ff750f2cfba7462c936dc \
                             -Dsonar.language=html,css \
                             -Dsonar.ws.timeout=300000 

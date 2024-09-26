@@ -26,7 +26,7 @@ pipeline {
                         sonar-scanner \
                             -Dsonar.projectKey=DevOpsTest \
                             -Dsonar.sources=. \
-                            -Dsonar.host.url=http://44.223.105.40:9000 \
+                            -Dsonar.host.url=http://3.238.9.159:9000 \
                             -Dsonar.login=${SONAR_TOKEN} \
                             -Dsonar.language=html,css \
                             -Dsonar.ws.timeout=300000 
@@ -40,7 +40,7 @@ pipeline {
             steps {
                 script {
                     def projectKey = 'DevOpsTest'
-                    def sonarQubeUrl = 'http://44.223.105.40:9000'
+                    def sonarQubeUrl = 'http://3.238.9.159:9000'
                     def sonarUser = 'admin'
                     def sonarPassword = 'admin'
         

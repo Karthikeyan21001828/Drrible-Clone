@@ -86,8 +86,8 @@ pipeline {
                     // Use bash to avoid bad substitution errors
                     sh '''#!/bin/bash
                     echo "Deploying application..."
-                    sudo rm -rf /var/www/html/*
-                    sudo cp -r ${WORKSPACE}/* /var/www/html/
+                    rm -rf /var/www/html/*
+                    cp -r ${WORKSPACE}/* /var/www/html/
                     '''
                 }
             }

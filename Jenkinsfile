@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        SONAR_TOKEN = "" // Use the stored Jenkins credential
+        SONAR_TOKEN = "squ_21efd1c21cbdecd2a263271539854db20f39467d" // Use the stored Jenkins credential
     }
     // triggers {
     //     pollSCM('H/1 * * * *') // Polls the SCM every minute
@@ -26,7 +26,7 @@ pipeline {
                         sonar-scanner \
                             -Dsonar.projectKey=my_project \
                             -Dsonar.sources=. \
-                            -Dsonar.host.url=http://44.203.225.43:9000 \
+                            -Dsonar.host.url=http://3.236.201.164:9000 \
                             -Dsonar.login=${SONAR_TOKEN} \
                             -Dsonar.language=html,css \
                             -Dsonar.ws.timeout=300000 
@@ -40,7 +40,7 @@ pipeline {
             steps {
                 script {
                     def projectKey = 'DevOpsTest'
-                    def sonarQubeUrl = 'http://44.203.225.43:9000'
+                    def sonarQubeUrl = 'http://3.236.201.164:9000'
                     def sonarUser = 'admin'
                     def sonarPassword = 'admin123'
         

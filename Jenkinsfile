@@ -83,16 +83,11 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                   def apacheContainerName = 'apache'
-
-                    // Define the target directory in the Apache container
-                    def targetDirectory = '/var/www/html/'
-
-                    // Use 'docker cp' to copy files from the Jenkins workspace to the Apache container
-                    sh """
-                    echo "Deploying application to Apache container..."
-                    docker cp ${WORKSPACE}/. ${apacheContainerName}:${targetDirectory}
-                    """
+                   sh '''#!/bin/bash
+                    echo "Deploying application to shared volume..."
+                    cp -r ${WORKSPACE}/* /app/
+                    echo "Deployment completed."
+                    '''
                 }
             }
         }

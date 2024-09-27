@@ -83,24 +83,16 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    // Use bash to avoid bad substitution errors
-                   sh '''#!/bin/bash
-                    echo "Deploying application..."
-                    
-                    # Ensure the target directory exists
-                    if [ ! -d /var/jenkins_home/workspace/Dribble-Clone ]; then
-                        echo "Creating target directory..."
-                        mkdir -p /var/jenkins_home/workspace/Dribble-Clone
-                    fi
-                    
-                    # Clean the target directory
-                    echo "Cleaning target directory..."
-                    rm -rf /var/jenkins_home/workspace/Dribble-Clone/*
-                    
-                    # Copy files from the current workspace
-                    echo "Copying files from the workspace..."
-                    cp -r ${WORKSPACE}/* /var/jenkins_home/workspace/Dribble-Clone/
-                    '''
+                   def apacheContainerName = 'apache'
+
+                    // Define the target directory in the Apache container
+                    def targetDirectory = '/var/www/html/'
+
+                    // Use 'docker cp' to copy files from the Jenkins workspace to the Apache container
+                    sh """
+                    echo "Deploying application to Apache container..."
+                    docker cp ${WORKSPACE}/. ${apacheContainerName}:${targetDirectory}
+                    """
                 }
             }
         }

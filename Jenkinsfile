@@ -20,7 +20,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 script {
-                    withSonarQubeEnv('SonarQube') { // Use the name of your SonarQube server here
+                        
                         sh '''
                         #!/bin/bash
                         sonar-scanner \
@@ -31,7 +31,6 @@ pipeline {
                             -Dsonar.language=html,css \
                             -Dsonar.ws.timeout=300000 
                         '''
-                    }
                 }
             }
         }

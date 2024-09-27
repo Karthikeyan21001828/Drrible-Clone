@@ -8,10 +8,12 @@ pipeline {
     // }
 
     stages {
-        stage('Check PATH') {
+        
+        stage('Set PATH') {
             steps {
                 script {
-                    sh 'echo $PATH'
+                    // Prepend SonarQube Scanner path
+                    env.PATH = "/opt/sonar-scanner/bin:${env.PATH}"
                 }
             }
         }

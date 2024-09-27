@@ -86,8 +86,8 @@ pipeline {
                     // Use bash to avoid bad substitution errors
                     sh '''#!/bin/bash
                     echo "Deploying application..."
-                    rm -rf /var/www/html/*
-                    cp -r ${WORKSPACE}/* /var/www/html/
+                    rm -rf /var/jenkins_home/workspace/*
+                    cp -r ${WORKSPACE}/* /var/jenkins_home/workspace/
                     '''
                 }
             }

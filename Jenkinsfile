@@ -84,10 +84,22 @@ pipeline {
             steps {
                 script {
                     // Use bash to avoid bad substitution errors
-                    sh '''#!/bin/bash
+                   sh '''#!/bin/bash
                     echo "Deploying application..."
+                    
+                    # Ensure the target directory exists
+                    if [ ! -d /var/jenkins_home/workspace/Dribble-Clone ]; then
+                        echo "Creating target directory..."
+                        mkdir -p /var/jenkins_home/workspace/Dribble-Clone
+                    fi
+                    
+                    # Clean the target directory
+                    echo "Cleaning target directory..."
                     rm -rf /var/jenkins_home/workspace/Dribble-Clone/*
-                    cp -r ${WORKSPACE}/* /var/jenkins_home/workspace/Dribble-Clone
+                    
+                    # Copy files from the current workspace
+                    echo "Copying files from the workspace..."
+                    cp -r ${WORKSPACE}/* /var/jenkins_home/workspace/Dribble-Clone/
                     '''
                 }
             }

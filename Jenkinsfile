@@ -47,7 +47,7 @@ pipeline {
         stage('SonarQube Quality Gate') {
             steps {
                 script {
-                    def projectKey = 'DevOpsTest'
+                    def projectKey = 'my_project'
                     def sonarQubeUrl = 'http://3.236.201.164:9000'
                     def sonarUser = 'admin'
                     def sonarPassword = 'admin123'

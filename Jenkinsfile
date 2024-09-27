@@ -8,6 +8,13 @@ pipeline {
     // }
 
     stages {
+        stage('Check PATH') {
+            steps {
+                script {
+                    sh 'echo $PATH'
+                }
+            }
+        }
         stage('Checkout') {
             steps {
                 checkout([$class: 'GitSCM',

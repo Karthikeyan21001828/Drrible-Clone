@@ -86,6 +86,7 @@ pipeline {
                    sh '''#!/bin/bash
                     echo "Deploying application to shared volume..."
                     cp ${WORKSPACE}/*.html ${WORKSPACE}/*.css /var/jenkins_home/deploy/
+                    ls ${WORKSPACE}
                     echo "Deployment completed."
                     '''
                 }

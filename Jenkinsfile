@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        SONAR_TOKEN = "squ_b6e3d2548c6dbdd03eb4a3c5f6940356ab18adf6" // Use the stored Jenkins credential
+        SONAR_TOKEN = "squ_00b3143bff7b69961eb7726a4e1b451a5505f135" // Use the stored Jenkins credential
     }
     // triggers {
     //     pollSCM('H/1 * * * *') // Polls the SCM every minute

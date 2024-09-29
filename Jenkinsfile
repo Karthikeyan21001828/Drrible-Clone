@@ -85,7 +85,7 @@ pipeline {
                 script {
                    sh '''#!/bin/bash
                     echo "Deploying application to shared volume..."
-                    cp -r ${WORKSPACE}/* /app/
+                    "cp -r ${WORKSPACE}/* /var/shared_data/deploy"
                     echo "Deployment completed."
                     '''
                 }

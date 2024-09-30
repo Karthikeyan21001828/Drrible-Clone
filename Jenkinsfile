@@ -85,8 +85,8 @@ pipeline {
                 script {
                    sh '''#!/bin/bash
                     echo "Deploying application to shared volume..."
-                    sudo cp ${WORKSPACE}/*.html ${WORKSPACE}/*.css /var/jenkins_home/deploy/
-                    sudo ls ${WORKSPACE}
+                    cp ${WORKSPACE}/*.html ${WORKSPACE}/*.css /var/jenkins_home/deploy/
+                    ls /var/jenkins_home/deploy/
                     echo "Deployment completed."
                     '''
                 }
